@@ -19,14 +19,13 @@ class DriverWrapper:
 
         self.headless = False
         self.implicit_wait = 4.5
-        self.sleep_before_request = 2
 
         self.driver = webdriver.Chrome(
             service=self.get_service(),
             options=self.get_options()
         )
 
-        self.driver.minimize_window()
+        #self.driver.minimize_window()
 
     def is_headless(self) -> bool:
         return self.headless
@@ -85,19 +84,10 @@ class DriverWrapper:
 
         return self.options
 
-    def sleep(self):
+    def implicit_waiting(self):
         self.driver.implicitly_wait(
             self.get_implicit_wait_value()
         )
-
-    def get_sleep_before_request(self) -> int:
-        return self.sleep_before_request
-
-    def set_sleep_before_request(
-            self,
-            value: int
-    ):
-        self.sleep_before_request = value
 
     def set_options(self, v):
         self.options = v

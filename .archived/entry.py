@@ -1,5 +1,6 @@
 from application \
-    import Application
+    import Application as \
+    Program
 
 application = None
 
@@ -7,7 +8,7 @@ application = None
 def main():
     global application
 
-    application = Application()
+    application = Program()
     application.initiate()
     application.execute()
     application.cleanup()

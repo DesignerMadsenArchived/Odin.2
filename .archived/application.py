@@ -1,11 +1,8 @@
-from domain \
-    import Domain
-
 from actors.commandline_actor \
     import CommandlineActor
 
-
-# https://realpython.com/python-gil/
+from domain \
+    import Domain
 
 
 class Application:
@@ -21,7 +18,9 @@ class Application:
 
     def execute(self):
         while self.get_is_running():
+            self.get_domain_area().operate()
             self.commandline.get_input()
+
 
     def cleanup(self):
         print("cleanup")
@@ -41,11 +40,11 @@ class Application:
     ):
         self.domain_area = with_domain
 
-    def get_is_running(self):
+    def get_is_running(self) -> bool:
         return self.running
 
     def set_is_running(
             self,
-            with_state
+            with_state: bool
     ):
         self.running = with_state
