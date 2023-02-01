@@ -14,14 +14,15 @@ class Crawler:
 
         self.buffer = Buffer()
         self.history = History()
+        self.debug = True
 
     def setup(self):
         pass
 
     def insert(
             self,
-            href
-    ):
+            href: str
+    ) -> None:
         if not (
                 self.history.is_in_history(
                     href
@@ -29,7 +30,7 @@ class Crawler:
         ):
             self.buffer.append(href)
 
-    def load(self):
+    def load(self) -> None:
         current = self.buffer.current()
 
         self.debug_status(current)
@@ -38,11 +39,24 @@ class Crawler:
         self.wrapper.goto(current)
         self.wrapper.sleep()
 
-    def is_done(self):
+    def is_done(self) -> bool:
         return self.buffer.is_empty()
 
-    def done(self):
+    def done(self) -> None:
         self.wrapper.done()
 
-    def debug_status(self, url):
-        print("==> here " + str(url))
+    def get_debug(self) -> bool:
+        return self.debug
+
+    def set_debug(
+            self,
+            select_value: bool
+    ) -> None:
+        self.debug = select_value
+
+    def debug_status(
+            self,
+            url: str
+    ) -> None:
+        if self.get_debug():
+            print("<<<DEBUG::STATUS>>> HERE - " + str(url))

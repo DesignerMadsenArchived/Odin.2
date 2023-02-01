@@ -19,6 +19,7 @@ class DriverWrapper:
 
         self.headless = False
         self.implicit_wait = 4.5
+        self.sleep_before_request = 2
 
         self.driver = webdriver.Chrome(
             service=self.get_service(),
@@ -27,16 +28,19 @@ class DriverWrapper:
 
         self.driver.minimize_window()
 
-    def is_headless(self):
+    def is_headless(self) -> bool:
         return self.headless
 
-    def set_headless(self, v):
-        self.headless = v
+    def set_headless(
+            self,
+            select_value: bool
+    ) -> None:
+        self.headless = select_value
 
-    def done(self):
+    def done(self) -> None:
         self.driver.close()
 
-    def setup_default_options(self):
+    def setup_default_options(self) -> webdriver.ChromeOptions:
         options = webdriver.ChromeOptions()
         options.add_argument( 'user-data-dir=' + self.user_data_dir )
 
@@ -48,7 +52,10 @@ class DriverWrapper:
         #
         return self.get_options()
 
-    def goto(self, url):
+    def goto(
+            self,
+            url: str
+    ):
         self.driver.get(url)
 
     def __setup_headless(self):
@@ -82,6 +89,15 @@ class DriverWrapper:
         self.driver.implicitly_wait(
             self.get_implicit_wait_value()
         )
+
+    def get_sleep_before_request(self) -> int:
+        return self.sleep_before_request
+
+    def set_sleep_before_request(
+            self,
+            value: int
+    ):
+        self.sleep_before_request = value
 
     def set_options(self, v):
         self.options = v

@@ -1,12 +1,16 @@
 from application \
     import Application
 
+application = None
+
 
 def main():
-    app = Application()
-    app.initiate()
-    app.execute()
-    app.cleanup()
+    global application
+
+    application = Application()
+    application.initiate()
+    application.execute()
+    application.cleanup()
 
 
 if __name__ == '__main__':
