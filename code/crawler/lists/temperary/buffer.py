@@ -5,15 +5,23 @@ class Buffer:
     def get_buffer(self):
         return self.list
 
-    def set_buffer(self, with_set):
+    def set_buffer(
+            self,
+            with_set
+    ):
         self.list = with_set
 
     def current(self):
         if self.is_empty():
             return None
 
-        current = self.list[0]
-        self.list.pop(0)
+        current = self.list[
+            self.__begin_at_position()
+        ]
+
+        self.list.pop(
+            self.__begin_at_position()
+        )
 
         return current
 
@@ -27,5 +35,7 @@ class Buffer:
     def is_empty(self):
         return self.size() == 0
 
+    def __begin_at_position(self) -> int:
+        return 0
 
 

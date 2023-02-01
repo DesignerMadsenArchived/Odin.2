@@ -9,14 +9,24 @@ class Counter:
     def set_value(self, v):
         self.value = v
 
-    def increase(self, withValue):
-        self.set_value(self.get_value() + withValue)
+    def increase(
+            self,
+            with_value
+    ):
+        self.set_value(
+            self.get_value() + with_value
+        )
 
     def increment(self):
         self.increase(1)
 
-    def decrease(self, withValue):
-        self.set_value( self.get_value() - withValue )
+    def decrease(
+            self,
+            with_value
+    ):
+        self.set_value(
+            self.get_value() - with_value
+        )
 
     def decrement(self):
         self.decrease(1)

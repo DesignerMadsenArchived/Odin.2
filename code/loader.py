@@ -25,9 +25,9 @@ def load_files(path_to):
 
 class Loader:
     def __init__(self, crawler):
-        self.path = os.path.join(\
-            get_directory(),\
-            os.path.basename( r"/data") \
+        self.path = os.path.join(
+            get_directory(),
+            os.path.basename( r"/data")
         )
 
         self.crawler = crawler

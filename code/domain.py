@@ -13,7 +13,10 @@ class Domain:
 
         self.crawler = Crawler()
 
-        self.loader = Loader(self.get_crawler())
+        self.loader = Loader(
+            self.get_crawler()
+        )
+
         self.loader.load()
 
     def operate(self):
@@ -24,7 +27,6 @@ class Domain:
 
     def process(self):
         self.crawler.load()
-        time.sleep(1.5)
 
     def done(self):
         self.crawler.done()
