@@ -1,10 +1,11 @@
+from application \
+    import Application
+
 from crawler.crawler \
     import Crawler
 
 from loader \
     import Loader
-
-import time
 
 
 class Domain:
@@ -31,14 +32,20 @@ class Domain:
     def done(self):
         self.crawler.done()
 
-    def set_application(self, withApp):
-        self.application = withApp
+    def set_application(
+            self,
+            with_value: Application
+    ):
+        self.application = with_value
 
-    def get_application(self):
+    def get_application(self) -> Application:
         return self.application
 
     def get_crawler(self):
         return self.crawler
 
-    def set_crawler(self, withValue):
-        self.crawler = withValue
+    def set_crawler(
+            self,
+            with_value: Crawler
+    ):
+        self.crawler = with_value
