@@ -1,17 +1,23 @@
+#!/usr/bin/python
 from src.Domain \
     import Domain
+
+from src.actor.Commandline \
+    import Commandline
 
 
 class Controller:
     def __init__(self):
         self.operational = False
+        self.commandLine = Commandline()
+        self.domain = Domain()
 
     def initialise(self):
-        pass
+        self.set_operational(True)
 
     def execute(self):
         while self.is_operational():
-            pass
+            self.commandLine.input()
 
     def cleanup(self):
         pass
