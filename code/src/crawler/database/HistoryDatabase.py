@@ -1,7 +1,6 @@
 from redis \
     import Redis
 
-
 # Caches the crawlers current state
 class HistoryDatabase:
     def __init__(

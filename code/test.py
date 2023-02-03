@@ -1,5 +1,11 @@
-from src.crawler.Cache.CacheDatabase \
-    import CacheDatabase
+import pprint
+from src.crawler.database.CacheDatabase \
+    import get_singleton
 
-database = CacheDatabase()
+from src.crawler.database.CacheEntry \
+    import CacheEntry
+
+
+database = get_singleton()
+entryList = database.get_list()
 
